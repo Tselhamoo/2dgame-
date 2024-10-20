@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class enemyhealth : MonoBehaviour
 {
-    public int numofBullettokill = 4;
-    int numofBulletTaken = 1;
+    public int numofArwTokill = 4;
+    int numofArwTaken = 1;
+    gamemanger gameGM;
 
-    public void bulletHit()
+    private void Start()
     {
-        if (numofBullettokill > numofBulletTaken)
+        gameGM = FindAnyObjectByType<gamemanger>();
+    }
+
+    public void arrowHit()
+    {
+        if (numofArwTokill > numofArwTaken)
         {
-            numofBulletTaken++;
-            Debug.Log("Bullet Hit : " + numofBulletTaken);
+            numofArwTaken++;
 
         }
         else
         {
+            gameGM.AddKills();
             Destroy(gameObject);
         }
-
     }
 }

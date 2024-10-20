@@ -5,18 +5,30 @@ using UnityEngine;
 
 public class attacklogic : MonoBehaviour
 {
+   
     float timer = 0;
-    public gamemanger gameM;
+    gamemanger gameM;
+    public float damage = 5f;
 
+    private void Start()
+    {
+        gameM = FindAnyObjectByType<gamemanger>();
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        timer += Time.deltaTime;
-        Debug.Log("Timer : " + timer);
-        if (collision.gameObject.tag == "Player" && (int) timer == 2)
+        if (collision.gameObject.tag == "Player")
         {
-            gameM.PlayerHit(1);
-            Debug.Log("Hit");
-            timer = 0;
-        } 
+
+            timer += Time.deltaTime;
+            Debug.Log("Timer : " + timer);
+
+            if ((int)timer == 2)
+            {
+                gameM.PlayerHit(damage);
+                Debug.Log("Hit");
+                timer = 0;
+
+            }
+        }
     }
 }

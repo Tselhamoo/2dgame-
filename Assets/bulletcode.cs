@@ -13,7 +13,7 @@ public class bulletcode : MonoBehaviour {
 
         if (collision.gameObject.tag == "enemy")
         {
-            collision.GetComponent<enemyhealth>().bulletHit();
+            collision.GetComponent<enemyhealth>().arrowHit();
             DestoryGameObj();
         }
     }
